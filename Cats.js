@@ -9,8 +9,6 @@ const fetchRandomButton = document.getElementById('fetchRandomButton');
 fetchRandomButton.addEventListener('click', (event) => {
     fetchRandomImage(); 
     document.getElementById('information').hidden = true;
-    prevButton.hidden = true;
-    nextButton.hidden = true;
 });
 
 const fetchBreedsButton = document.getElementById('fetchBreedsButton');
@@ -19,10 +17,13 @@ fetchBreedsButton.addEventListener('click', (event) => {
 });
 
 prevButton.addEventListener('click', (event) => {
-    if(currentIndex > 0){
-        loadImageAndInfo(--currentIndex);
-        selectBreed.options[currentIndex].selected = true;
-    }
+    if(currentIndex <= 0)
+      currentIndex = breedsStore.length - 1;
+    else
+      --currentIndex;
+
+    loadImageAndInfo(currentIndex);
+    selectBreed.options[currentIndex].selected = true;
 });
 
 nextButton.addEventListener('click', (event) => {
@@ -118,8 +119,8 @@ function fetchImageByID(imgID) {
   function loadImage(url){
     const imageElement = document.createElement("img");
     imageElement.src = url;
-    imageElement.style.maxWidth = "98%";
-    imageElement.style.maxWidth = "98%";
+    //imageElement.style.maxWidth = "500px";
+    imageElement.style.height = "500px";
     const imgContainer = document.getElementById("image-container");
     imgContainer.innerHTML = "";
     imgContainer.appendChild(imageElement);
@@ -129,7 +130,6 @@ function fetchImageByID(imgID) {
     const infoDiv = document.getElementById('information');
     infoDiv.hidden = false;
 
-    document.getElementById('id').textContent = info.id;
     document.getElementById('name').textContent = info.name;
     document.getElementById('weight').textContent = info.weight.metric + " kg";
     document.getElementById('temperament').textContent = info.temperament;

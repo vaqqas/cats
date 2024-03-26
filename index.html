@@ -14,35 +14,37 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
     <body>
-        <div class="container" > 
-            <div class="row h-10">
+        <div class="container-fluid" > 
+            <div class="row">
                 <div class="col-12 text-center">
-                    <p class="h1 display-1">Cats</p>
+                    <p class="h1 display-3">Cats</p>
                 </div>                
             </div>
             <div class="row h-5 border">
                 <div class="col-2">
                     <input type="button" id="fetchBreedsButton" value="Fetch Breeds" class="btn btn-primary"/>
                 </div>
-                <div class="col-8">
+                <div class="col-6">
                     <select type="select" id="selectBreed" class="form-control">
                         <option>Click on the Fetch Beeds button to load</option>
                     </select>
+                </div>
+                <div class="col-1">
+                    <input type="button" id="prevButton" value="<" class="btn btn-primary" hidden="true"/>
+                </div>
+                <div class="col-1">
+                    <input type="button" id="nextButton" value=">" class="btn btn-primary" hidden="true"/>
                 </div>
                 <div class="col-2">
                     <input type="button" id="fetchRandomButton" value="Fetch Random" class="btn btn-primary">
                 </div>
             </div>    
-            <div class="row border h-75 inline-block">
-                <div class="col-6">
-                    <div class="row" id="information" hidden="true">
+            <div class="row border inline-block">
+                <div class="col-4" id="information" hidden="true">
+                    <div class="row" >
                         <div class="col">
                             <div class="row">
-                                <label>ID:</label>
-                                <span id="id" class="text-capitalize"></span>
-                            </div>
-                            <div class="row">
-                                <label>Name:</label>
+                                <label>Breed Name:</label>
                                 <span id="name" class="text-capitalize"></span>
                             </div>
                             <div class="row">
@@ -72,17 +74,9 @@
                         </div>                        
                     </div>
                 </div>
-                <div class="col-6 border" id="image-container">
+                <div class="col-8 mainDisplay" id="image-container">
                 </div>
             </div>
-            <div class="row h-10 justify-content-between">
-                <div class="col-1">
-                    <input type="button" id="prevButton" value="<" class="btn btn-primary" hidden="true"/>
-                </div>
-                <div class="col-1">
-                    <input type="button" id="nextButton" value=">" class="btn btn-primary" hidden="true"/>
-                </div>
-            </div> 
         </div>
     </body>
 </html>
